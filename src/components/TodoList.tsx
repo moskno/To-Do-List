@@ -1,22 +1,9 @@
 import { TodoItem } from "./TodoItem";
+import { useTodos } from "../services/TodosContext";
 
-interface Todo {
-  id: string;
-  title: string;
-  completed: boolean;
-}
+export const TodoList: React.FC = () => {
+  const { todos, toggleTodo, deleteTodo } = useTodos();
 
-interface TodoListProps {
-  todos: Todo[];
-  toggleTodo: (id: string, completed: boolean) => void;
-  deleteTodo: (id: string) => void;
-}
-
-export const TodoList: React.FC<TodoListProps> = ({
-  todos,
-  toggleTodo,
-  deleteTodo,
-}) => {
   return (
     <ul className="list">
       {todos.length === 0 && "No Todos"}

@@ -1,18 +1,16 @@
 import { useState } from "react";
+import { useTodos } from "../services/TodosContext";
 
-interface NewTodoFormProps {
-  onSubmit: (title: string) => void;
-}
-
-export const NewTodoForm: React.FC<NewTodoFormProps> = ({ onSubmit }) => {
+export const NewTodoForm: React.FC = () => {
   const [newItem, setNewItem] = useState("");
+  const { addTodo } = useTodos();
 
-  function handleSubmit(e: React.FormEvent) {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (newItem === "") return;
-    onSubmit(newItem);
+    if (!newItem) return;
+    addTodo(newItem);
     setNewItem("");
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="New-item-form">
@@ -23,7 +21,7 @@ export const NewTodoForm: React.FC<NewTodoFormProps> = ({ onSubmit }) => {
         type="text"
         id="item"
       />
-      <button className="btn">ddd</button>
+      <button className="btn">Add</button>
     </form>
   );
 };
