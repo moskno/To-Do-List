@@ -23,7 +23,7 @@ export const NewTodoForm: React.FC<NewTodoFormProps> = ({ onSubmit }) => {
         type="text"
         id="item"
       />
-      <button className="btn">Add</button>
+      <button className="btn">ddd</button>
     </form>
   );
 };
